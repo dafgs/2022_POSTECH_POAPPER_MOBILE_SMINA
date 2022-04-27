@@ -1,0 +1,372 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+MaterialColor createMaterialColor(Color color) {
+  List strengths = <double>[.05];
+  Map<int, Color> swatch = {};
+  final int r = color.red, g = color.green, b = color.blue;
+  for (int i = 1; i < 10; i++) {
+    strengths.add(0.1 * i);
+  }
+  strengths.forEach((strength) {
+    final double ds = 0.5 - strength;
+    swatch[(strength * 1000).round()] = Color.fromRGBO(
+      r + ((ds < 0 ? r : (255 - r)) * ds).round(),
+      g + ((ds < 0 ? g : (255 - g)) * ds).round(),
+      b + ((ds < 0 ? b : (255 - b)) * ds).round(),
+      1,
+    );
+  });
+  return MaterialColor(color.value, swatch);
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: createMaterialColor(Colors.white),
+      ),
+      home: const MyHomePage(title: 'YouTube'),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('YouTube'),
+          leading: Image.network(
+              "https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.airplay),
+              onPressed: () {
+                print('button is  clicked');
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.add_alert_outlined),
+              onPressed: () {
+                print('button is  clicked');
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                print('search button is  clicked');
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.account_circle_rounded),
+              onPressed: () {
+                print('search button is  clicked');
+              },
+            ),
+          ],
+        ),
+
+        body:
+        Center(
+
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  height: 650,
+                  child: ListView(
+                    children: <Widget>[
+                      Column(
+
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+
+
+
+                          Container(
+                            margin:
+                            EdgeInsets.only(top: 10),
+
+                            padding: EdgeInsets.only(bottom: 0),
+                            color: Color(0xffffffff),
+                            child: Image.network(
+                                "https://i.ytimg.com/an_webp/w9JE8b-84UI/mqdefault_6s.webp?du=3000&sqp=COLdo5MG&rs=AOn4CLAzHdlpXsNLiq8mbZVzo9IPCO6V9w"),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(top: 10, left: 10),
+                                child: CircleAvatar(
+                                    backgroundImage: NetworkImage("https://yt3.ggpht.com/ytc/AKedOLSzf7QjxGPj2cEboc1u4nLyz-36kFiPLx-YMN98Lg=s88-c-k-c0x00ffffff-no-rj"),
+                                    radius: 20                    ),
+                              ),
+                              Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(top: 10, left: 20, right: 100),
+
+                                    child: Text('탄범준 - 고백 (Live)',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(top: 5, right: 105),
+                                    child: Text('장범준 · 조회수 101만회 · 9개월 전',
+                                      style: TextStyle(
+                                        color: Colors.black38,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.menu_outlined),
+                                onPressed: () {
+                                  print('search button is  clicked');
+                                },
+                              ),
+                            ],
+                          ),
+                          Container(
+                            margin:
+                            EdgeInsets.only(top: 10),
+
+                            padding: EdgeInsets.only(bottom: 0),
+                            color: Color(0xffffffff),
+                            child: Image.network(
+                                "https://i.ytimg.com/vi/cIyAqMRVecc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDKkECx9OfiOlVG4MhLFsKgse7M-Q"),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(top: 10, left: 10),
+                                child: CircleAvatar(
+                                    backgroundImage: NetworkImage("https://yt3.ggpht.com/ytc/AKedOLTFA7iN7u3MVzGQh_QwRM6vm1z-jYIWtJB_0OqwudMJwkAiuP37UfG8M6SrbuRSYH4-Suw=s68-c-k-c0x00ffffff-no-rj"),
+                                    radius: 20                    ),
+                              ),
+                              Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(top: 10, left: 20, right: 100),
+
+                                    child: Text('장범준 - 노래방에서 가사',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(top: 5, right: 105),
+                                    child: Text('재범 · 조회수 1476만회 · 3년 전',
+                                      style: TextStyle(
+                                        color: Colors.black38,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.menu_outlined),
+                                onPressed: () {
+                                  print('search button is  clicked');
+                                },
+                              ),
+                            ],
+                          ),
+                          Container(
+                            margin:
+                            EdgeInsets.only(top: 10),
+
+                            padding: EdgeInsets.only(bottom: 0),
+                            color: Color(0xffffffff),
+                            child: Image.network(
+                                "https://i.ytimg.com/an_webp/OVYNeJCWWws/mqdefault_6s.webp?du=3000&sqp=CMjOo5MG&rs=AOn4CLA9DvfAkFdJn_UU7y-kU6GUylSffQ"),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(top: 10, left: 10),
+                                child: CircleAvatar(
+                                    backgroundImage: NetworkImage("https://yt3.ggpht.com/ytc/AKedOLRiTKMcX4_w3g5aq-PeOMrGPdMBnD0mNDXVazk0=s68-c-k-c0x00ffffff-no-rj"),
+                                    radius: 20                    ),
+                              ),
+                              Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(top: 10, left: 20, right: 100),
+
+                                    child: Text('난입가렌??? 이거 어쩌면...',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(top: 5, right: 105),
+                                    child: Text('쓰리컨드 · 조회수 2.8만회 · 1일 전',
+                                      style: TextStyle(
+                                        color: Colors.black38,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.menu_outlined),
+                                onPressed: () {
+                                  print('search button is  clicked');
+                                },
+                              ),
+                            ],
+                          ),
+                          Container(
+                            margin:
+                            EdgeInsets.only(top: 10),
+
+                            padding: EdgeInsets.only(bottom: 0),
+                            color: Color(0xffffffff),
+                            child: Image.network(
+                                "https://i.ytimg.com/vi/TSgW7CJLW38/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC-KISUR1InbsUDjOpax1M1dEmoLw"),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(top: 10, left: 10),
+                                child: CircleAvatar(
+                                    backgroundImage: NetworkImage("https://yt3.ggpht.com/ytc/AKedOLTi6w4E6985-QdVBbovBSsnCeTETyj0WomjM5IY8Q=s68-c-k-c0x00ffffff-no-rj"),
+                                    radius: 20                    ),
+                              ),
+                              Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(top: 10, left: 20, right: 100),
+
+                                    child: Text('지면 가랑이 사이로 기어라',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(top: 5, right: 105),
+                                    child: Text('침착맨 · 조회수 6.5천회 · 8분 전',
+                                      style: TextStyle(
+                                        color: Colors.black38,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.menu_outlined),
+                                onPressed: () {
+                                  print('search button is  clicked');
+                                },
+                              ),
+                            ],
+                          ),
+                          Row(
+
+                            children: <Widget>[
+                              Expanded(
+                                child: Container(
+
+                                  height: 310,
+
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    children: <Widget>[
+                                      Container(
+
+                                        margin: EdgeInsets.only(top: 10),
+
+                                        padding: EdgeInsets.only(bottom: 0),
+                                        color: Color(0xffffffff),
+                                        height: 310,
+                                        width: 165,
+                                        child: Image.network(
+                                            "https://blogfiles.pstatic.net/MjAyMjA0MjVfMTYz/MDAxNjUwODE0ODExNTAx.u4Rk0WEBtyj0swiA0iNj3MK1YrwGFn0wre4GaHh6vHUg.1UEFQVyDz_uNm8PsuTYtmd4xeY9-PbPjGe5eMXYO-B8g.JPEG.moa0920/%ED%99%94%EB%A9%B4_%EC%BA%A1%EC%B2%98_2022-04-25_003747.jpg?type=w2"),
+                                      ),
+                                      Container(
+                                        margin:
+                                        EdgeInsets.only(top: 10),
+
+                                        padding: EdgeInsets.only(bottom: 0),
+                                        color: Color(0xffffffff),
+                                        height: 310,
+                                        width: 165,
+                                        child: Image.network(
+                                            "https://blogfiles.pstatic.net/MjAyMjA0MjVfMTU1/MDAxNjUwODE0ODExMTY4.kZZifUvlQsnEJFOaF7Lqj79-WrfmoOAyhhl4O8woGRog.dVspZvfIGcn5xej_WfYX-ZMVD4lHheDiNZsKgfWyFgsg.JPEG.moa0920/flutter1.jpg?type=w2"),
+                                      ),
+                                      Container(
+                                        margin:
+                                        EdgeInsets.only(top: 10),
+
+                                        padding: EdgeInsets.only(bottom: 0),
+                                        color: Color(0xffffffff),
+                                        height: 310,
+                                        width: 165,
+                                        child: Image.network(
+                                            "https://blogfiles.pstatic.net/MjAyMjA0MjVfMTg0/MDAxNjUwODE0ODExODM4.SYLyVPtwhBVpeOkIe3Eg7eS9qMs8ZdKYjXuFqiXhoqMg.vOCzlLPTklYt3eoR8kvlEi86Yf2w075oV6ARaVTKFNAg.JPEG.moa0920/%ED%99%94%EB%A9%B4_%EC%BA%A1%EC%B2%98_2022-04-25_003825.jpg?type=w2"),
+                                      ),
+                                      Container(
+                                        margin:
+                                        EdgeInsets.only(top: 10),
+
+                                        padding: EdgeInsets.only(bottom: 0),
+                                        color: Color(0xffffffff),
+                                        height: 310,
+                                        width: 165,
+                                        child: Image.network(
+                                            "https://blogfiles.pstatic.net/MjAyMjA0MjVfMTk0/MDAxNjUwODE0ODEyMTUz.pjF8CPjNPPfQn0plWMNKOvGkEwzROT2wYhGUg6VB-7Ag.0QR2JR2lCBaXwy5qMxRcWPYdy5fWLBi0j553LnZDmBcg.JPEG.moa0920/%ED%99%94%EB%A9%B4_%EC%BA%A1%EC%B2%98_2022-04-25_003805.jpg?type=w2"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+
+        )
+    );
+
+
+  }
+}
